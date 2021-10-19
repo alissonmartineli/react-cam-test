@@ -1,14 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import VideoRecorder from '../components/VideoRecorder'
 
 const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Video Capture</title>
+        <title>Video Recorder</title>
       </Head>
 
-      <main></main>
+      <main>
+        <VideoRecorder />
+      </main>
     </div>
   )
 }

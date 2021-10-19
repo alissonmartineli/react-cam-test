@@ -18,7 +18,6 @@ const VideoCapture: FunctionComponent = () => {
       .then(function (stream) {
         if (video.current) {
           video.current.srcObject = stream
-          video.current.play()
         }
 
         const recorder = new MediaRecorder(stream)
@@ -67,7 +66,9 @@ const VideoCapture: FunctionComponent = () => {
     <Stack alignItems="center" sx={{ position: 'relative' }}>
       <video
         ref={video}
+        autoPlay
         muted
+        playsInline
         style={{ maxHeight: '100vh', maxWidth: '100vw' }}
       />
 

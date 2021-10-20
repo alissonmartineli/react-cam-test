@@ -1,5 +1,7 @@
 import { Button, Stack } from '@material-ui/core'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
+// eslint-disable-next-line no-unused-vars
+import adapter from 'webrtc-adapter'
 
 const constraints = { video: true, audio: true }
 
@@ -49,7 +51,7 @@ const VideoCapture: FunctionComponent = () => {
 
   const download = () => {
     const blob = new Blob(chunks, {
-      type: 'video/webm'
+      type: 'video/mp4'
     })
     const url = URL.createObjectURL(blob)
 
@@ -57,7 +59,7 @@ const VideoCapture: FunctionComponent = () => {
     document.body.appendChild(a)
     a.style.display = 'none'
     a.href = url
-    a.download = 'react-video-capture.webm'
+    a.download = 'react-video-capture.mp4'
     a.click()
     window.URL.revokeObjectURL(url)
   }
@@ -69,7 +71,12 @@ const VideoCapture: FunctionComponent = () => {
         autoPlay
         muted
         playsInline
-        style={{ maxHeight: '100vh', maxWidth: '100vw' }}
+        style={{
+          maxHeight: '100vh',
+          maxWidth: '100vw',
+          transform: 'scale(-1, 1)',
+          WebkitTransform: 'scale(-1, 1)'
+        }}
       />
 
       <Stack
